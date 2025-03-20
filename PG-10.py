@@ -1,16 +1,20 @@
-def count_alfa_num(sr):
+def frequency(st):
+    a=""
+    ls=[]
     dic={}
-    cap=0
-    num=0
-    for i in sr:
-        if 65<=ord(i)<91 or (65+32<=ord(i)<91+32):
-            cap=cap+1
-        elif(0<=int(i)<=9):
-            num=num+1     
+    for i in st:
+        if i == " ":
+            ls.append(a)
+            a=""
         else:
-            pass
-    dic.update({"alpha":cap , "digit":num})
-    return dic
+            a=a+i
+    ls.append(a)
+    for i in range(len(ls)):
+        c=0
+        for j in range(len(ls)):
+            if(ls[i]==ls[j]):
+                c=c+1
+        dic.update({ls[i]:c})
+    return dic          
 a=input("enter the string = ")
-a=a.replace(" ","")
-print(count_alfa_num(a))
+print(frequency(a))
